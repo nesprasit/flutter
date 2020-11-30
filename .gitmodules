@@ -1,6 +1,6 @@
 [submodule "flutter_architecture"]
 	path = flutter_architecture
-	url = https://github.com/nesprasit/flutter.git
+	url = https://Okanesboy@bitbucket.org/maew-dev/flutter-provider.git
 [submodule "flutter"]
 	path = flutter
 	url = https://github.com/nesprasit/flutter.git
