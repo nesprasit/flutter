@@ -71,7 +71,7 @@ class _HomeState extends State<Home> {
             ),
             Align(
               child: Text(
-                AppLocalizations.of(context).helloWorld,
+                AppLocalizations.of(context).home,
                 style: TextStyle(fontSize: 50),
               ),
             )

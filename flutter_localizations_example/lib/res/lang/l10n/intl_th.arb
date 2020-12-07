@@ -1,4 +1,5 @@
 {
     "@@locale": "th",
-    "helloWorld": "สวัดสดีชาวโลก"
+    "helloWorld": "สวัดสดีชาวโลก",
+    "home":"บ้าน"
 }
