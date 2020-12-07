@@ -13,8 +13,8 @@ Localizations Flutter application.
 
 ## flutter_intl:
  - flutter_intl:
-    enabled: true
-    class_name: AppLocalizations
-    main_locale: en
-    arb_dir: lib/res/lang/l10n
-    output_dir: lib/res/lang/generated
+     enabled: true
+     class_name: AppLocalizations
+     main_locale: en
+     arb_dir: lib/res/lang/l10n
+     output_dir: lib/res/lang/generated
