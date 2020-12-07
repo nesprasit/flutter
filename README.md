@@ -7,6 +7,7 @@
   - Expansion View List
 - Web Socket Chat
 - Localizations Language
+- Persistent Storage
 
 ### Helper Command
 | Command | README |
