@@ -8,8 +8,8 @@ Localizations Flutter application.
  - intl: ^0.16.1
 
 ## flutter
- - flutter
-  - generate: true
+ - flutter:
+   - generate: true
 
 ## flutter_intl:
  - flutter_intl:
