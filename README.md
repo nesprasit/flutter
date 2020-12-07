@@ -6,6 +6,7 @@
   - Api Pattern 
   - Expansion View List
 - Web Socket Chat
+- Localizations Language
 
 ### Helper Command
 | Command | README |
