@@ -2,6 +2,9 @@
 
 Localizations Flutter application.
 
+# Example
+![Alt Text](https://github.com/nesprasit/flutter/blob/main/flutter_localizations_example/example.gif)
+
 ## Dependencies Used
  - flutter_localizations:
     sdk: flutter

@@ -1,4 +1,4 @@
-# flutter web socket
+# Flutter web socket
 
 Web Socket Flutter application.
 
