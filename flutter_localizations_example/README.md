@@ -11,7 +11,7 @@ Localizations Flutter application.
  - flutter:
    - generate: true
 
-## flutter_intl:
+## flutter_intl
  - flutter_intl:
    - enabled: true
    - class_name: AppLocalizations
