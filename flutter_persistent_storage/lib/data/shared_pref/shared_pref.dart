@@ -1,9 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPrefManager {
-  Future<SharedPreferences> _instance() async {
-    return await SharedPreferences.getInstance();
-  }
+class SharedPref {
+  Future<SharedPreferences> _instance() async =>
+      await SharedPreferences.getInstance();
 
   putString(String key, String value) async {
     SharedPreferences pref = await _instance();

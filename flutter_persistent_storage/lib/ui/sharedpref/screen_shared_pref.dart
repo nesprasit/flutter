@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_persistent_storage/models/user_model.dart';
 import 'package:flutter_persistent_storage/ui/form/form_dialog.dart';
-import 'package:flutter_persistent_storage/ui/sharedpref/shared_pref_manager_imlp.dart';
+import 'package:flutter_persistent_storage/data/shared_pref/shared_pref_manager.dart';
 
 class ScreenSharedPref extends StatefulWidget {
   @override
@@ -10,12 +11,11 @@ class ScreenSharedPref extends StatefulWidget {
 }
 
 class _ScreenSharedPrefState extends State<ScreenSharedPref> {
-  List<Map<String, dynamic>> lists = [];
+  List<UserModel> lists = [];
 
   @override
   void initState() {
     super.initState();
-    print('initState');
     _getUsers();
   }
 
@@ -23,7 +23,8 @@ class _ScreenSharedPrefState extends State<ScreenSharedPref> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Screen Shared Preferences"),
+        title:
+            Text("Screen Shared Preferences", style: TextStyle(fontSize: 14)),
         actions: [
           FlatButton(
             onPressed: () {
@@ -43,13 +44,10 @@ class _ScreenSharedPrefState extends State<ScreenSharedPref> {
         child: ListView.builder(
           itemCount: lists.length,
           itemBuilder: (context, index) {
-            final nickName = lists.elementAt(index)["nick_name"];
-            final firstName = lists.elementAt(index)["first_name"];
-            final lastName = lists.elementAt(index)["last_name"];
-
+            final model = lists.elementAt(index) ?? UserModel();
             return ListTile(
-              title: Text('$nickName'),
-              subtitle: Text('$firstName $lastName'),
+              title: Text('${model.nickName}'),
+              subtitle: Text('${model.fristName} ${model.lastName}'),
             );
           },
         ),
@@ -70,19 +68,17 @@ class _ScreenSharedPrefState extends State<ScreenSharedPref> {
   }
 
   _delete() async {
-    await SharedPrefManagerImlp().clear();
+    await SharedPrefManager().clear();
   }
 
   _getUsers() async {
-    await SharedPrefManagerImlp().reload();
-    var users = await SharedPrefManagerImlp().getUsers();
+    final users = await SharedPrefManager().getUsers();
 
     setState(
       () {
         if (users?.isNotEmpty ?? false) {
-          lists = (jsonDecode(users) as List<dynamic>)
-                  ?.cast<Map<String, dynamic>>() ??
-              [];
+          List userList = json.decode(users);
+          lists = userList.map((e) => UserModel.fromJson(e)).toList();
         } else {
           lists = [];
         }
@@ -91,29 +87,29 @@ class _ScreenSharedPrefState extends State<ScreenSharedPref> {
   }
 
   _saveUsers(String nickName, String firstName, String lastName) async {
-    await SharedPrefManagerImlp().reload();
-    var users = await SharedPrefManagerImlp().getUsers();
+    await SharedPrefManager().reload();
+    var users = await SharedPrefManager().getUsers();
 
-    List<Map<String, dynamic>> data = [];
+    List<UserModel> data = [];
 
     if (users?.isNotEmpty ?? false) {
-      final json =
-          (jsonDecode(users) as List<dynamic>)?.cast<Map<String, dynamic>>() ??
-              [];
-
-      data.addAll(json);
+      List userList = (json.decode(users) as List<dynamic>);
+      data.addAll(userList.map((e) => UserModel.fromJson(e)).toList());
     }
 
-    data.add(Map.from({
-      "nick_name": nickName,
-      "first_name": firstName,
-      "last_name": lastName,
-    }));
+    final user = UserModel(
+      nickName: nickName,
+      fristName: firstName,
+      lastName: lastName,
+    );
 
-    final isSave = await SharedPrefManagerImlp().saveUsers(jsonEncode(data));
+    data.add(user);
+    final isSave = await SharedPrefManager().saveUsers(jsonEncode(data));
 
     if (isSave) {
-      await _getUsers();
+      setState(() {
+        lists.add(user);
+      });
     }
   }
 }
