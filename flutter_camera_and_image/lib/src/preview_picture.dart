@@ -123,7 +123,7 @@ class _PreviewPictureState extends State<PreviewPicture> {
       );
 
   _takeCamera() async {
-    final picked = await PickerImage.pickerCamera();
+    final picked = await PickerImage.takeCamera();
 
     setState(() {
       if (picked != null) {
