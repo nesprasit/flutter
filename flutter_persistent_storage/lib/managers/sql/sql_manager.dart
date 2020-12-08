@@ -1,4 +1,4 @@
-import 'package:flutter_persistent_storage/data/sql/sql.dart';
+import 'package:flutter_persistent_storage/managers/sql/sql.dart';
 import 'package:flutter_persistent_storage/models/user_model.dart';
 import 'package:sqflite/sqflite.dart';
 

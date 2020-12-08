@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_persistent_storage/managers/shared_pref/shared_pref_manager.dart';
 import 'package:flutter_persistent_storage/models/user_model.dart';
 import 'package:flutter_persistent_storage/ui/form/form_dialog.dart';
-import 'package:flutter_persistent_storage/data/shared_pref/shared_pref_manager.dart';
 
 class ScreenSharedPref extends StatefulWidget {
   @override

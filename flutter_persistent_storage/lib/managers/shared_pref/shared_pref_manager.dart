@@ -1,4 +1,4 @@
-import 'package:flutter_persistent_storage/data/shared_pref/shared_pref.dart';
+import 'package:flutter_persistent_storage/managers/shared_pref/shared_pref.dart';
 
 class SharedPrefManager extends SharedPref {
   static final SharedPrefManager _singleton = SharedPrefManager._internal();
