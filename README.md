@@ -8,6 +8,7 @@
 - Web Socket Chat
 - Localizations Language
 - Persistent Storage
+- Camera and Image
 
 ### Helper Command
 | Command | README |
