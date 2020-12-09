@@ -2,9 +2,6 @@
 
 Camera And Image in Flutter application.
 
-# Example
-![Alt Text](https://github.com/nesprasit/flutter/blob/main/flutter_camera_and_image/example.gif)
-
 # Permisson
   - IOS
     ```ruby
@@ -20,3 +17,18 @@ Camera And Image in Flutter application.
     <uses-feature android:name="android.hardware.camera" android:required="false" />
     <uses-feature android:name="android.hardware.camera.front" android:required="false" />
     ```
+
+# Request Version
+  - Android >= 21 
+
+# Example
+![Alt Text](https://github.com/nesprasit/flutter/blob/main/flutter_camera_and_image/example.gif)
+
+# Dependencies used
+  ```ruby
+  - image_picker: ^0.6.7+14
+  - camera:
+  - path_provider:
+  - path:
+  ```
+
