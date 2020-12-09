@@ -24,7 +24,7 @@ Camera And Image in Flutter application.
 ## Example
 ![Alt Text](https://github.com/nesprasit/flutter/blob/main/flutter_camera_and_image/example.gif)
 
-## Dependencies used
+## Dependencies Used
   ```ruby
   - image_picker: ^0.6.7+14
   - camera:
