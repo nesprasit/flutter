@@ -14,3 +14,9 @@ Camera And Image in Flutter application.
     <key>NSCameraUsageDescription</key>
     <string>$(PRODUCT_BUNDLE_IDENTIFIER) photo camera</string>
     ```
+  - Android
+    ```ruby
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.front" android:required="false" />
+    ```
