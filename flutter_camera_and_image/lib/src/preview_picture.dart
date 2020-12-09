@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_camera_and_image/src/camera_in_app.dart';
 import 'package:flutter_camera_and_image/utils/pick_image.dart';
 
 class PreviewPicture extends StatefulWidget {
@@ -35,11 +36,7 @@ class _PreviewPictureState extends State<PreviewPicture> {
                 buildButtonSelectImage(),
                 Container(
                   margin: const EdgeInsets.only(top: 16),
-                  //https://pbs.twimg.com/media/EoXvTFHVQAIQnyW.jpg
-                  child: _image != null
-                      ? Image.file(_image)
-                      : Image.network(
-                          'https://pbs.twimg.com/media/EoXvTFHVQAIQnyW.jpg'),
+                  child: _image != null ? Image.file(_image) : Container(),
                 )
               ],
             ),
@@ -84,7 +81,9 @@ class _PreviewPictureState extends State<PreviewPicture> {
                   ),
                   FlatButton(
                     minWidth: 130,
-                    onPressed: () {},
+                    onPressed: () {
+                      _openCameraInApp();
+                    },
                     child: Text(
                       'Take a picture in app',
                       style: TextStyle(color: Colors.white),
@@ -93,30 +92,6 @@ class _PreviewPictureState extends State<PreviewPicture> {
                   )
                 ],
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                FlatButton(
-                  minWidth: 130,
-                  onPressed: () {},
-                  child: Text(
-                    'intent to Gallery',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  color: Colors.blue,
-                ),
-                FlatButton(
-                  minWidth: 130,
-                  onPressed: () {},
-                  child: Text(
-                    'intent to Take a picture',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  color: Colors.blue,
-                )
-              ],
             )
           ],
         ),
@@ -144,5 +119,20 @@ class _PreviewPictureState extends State<PreviewPicture> {
         print('path file err $picked');
       }
     });
+  }
+
+  _openCameraInApp() async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CameraInApp(),
+      ),
+    );
+
+    if (result != null) {
+      setState(() {
+        _image = File(result);
+      });
+    }
   }
 }

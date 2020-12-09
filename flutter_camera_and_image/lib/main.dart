@@ -6,7 +6,6 @@ void main() {
 }
 
 class App extends MaterialApp {
-
   @override
   bool get debugShowCheckedModeBanner => false;
 
