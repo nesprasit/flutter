@@ -9,8 +9,8 @@ Camera And Image in Flutter application.
   - IOS
     ```ruby
     <key>NSPhotoLibraryUsageDescription</key>
-	  <string>$(PRODUCT_BUNDLE_IDENTIFIER) photo use</string>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER) photo use</string>
     
-	  <key>NSCameraUsageDescription</key>
-	  <string>$(PRODUCT_BUNDLE_IDENTIFIER) photo camera</string>
+    <key>NSCameraUsageDescription</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER) photo camera</string>
     ```
