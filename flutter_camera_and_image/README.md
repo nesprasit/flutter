@@ -2,7 +2,7 @@
 
 Camera And Image in Flutter application.
 
-# Permisson
+## Permisson
   - IOS
     ```ruby
     <key>NSPhotoLibraryUsageDescription</key>
@@ -18,13 +18,13 @@ Camera And Image in Flutter application.
     <uses-feature android:name="android.hardware.camera.front" android:required="false" />
     ```
 
-# Request Version
+## Request Version
   - Android >= 21 
 
-# Example
+## Example
 ![Alt Text](https://github.com/nesprasit/flutter/blob/main/flutter_camera_and_image/example.gif)
 
-# Dependencies used
+## Dependencies used
   ```ruby
   - image_picker: ^0.6.7+14
   - camera:
