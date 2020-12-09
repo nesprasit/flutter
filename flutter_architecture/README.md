@@ -2,7 +2,7 @@
 Provider Simple Architecture TodoList App 
 
 ## Folder Structure
-```
+```ruby
 lib
 ├── main.dart
 ├── res/
