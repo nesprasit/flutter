@@ -30,7 +30,11 @@ dependencies:
   # Provider
   provider: ^4.3.2+2
 
+  # Json Annotation
   json_annotation: ^3.1.0
+
+  # Service Locator
+  get_it: ^5.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

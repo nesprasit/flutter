@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_architecture_mvvm_0/src/servicelocator/ServiceLocator.dart';
 import 'package:flutter_architecture_mvvm_0/src/views/presentation/home/HomeScreen.dart';
 
 void main() {
+  setupLocator();
   runApp(App());
 }
 

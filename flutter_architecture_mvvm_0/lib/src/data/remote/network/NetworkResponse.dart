@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class NetworkResponse<T> {
   NetworkResponseState state;
   int statusCode;
@@ -5,7 +7,12 @@ class NetworkResponse<T> {
 
   T data;
 
-  NetworkResponse();
+  NetworkResponse(NetworkResponse response) {
+    this.state = response.state;
+    this.statusCode = response.statusCode;
+    this.statusMessage = response.statusMessage;
+    this.data = response.data;
+  }
 
   NetworkResponse.success({this.data}) : state = NetworkResponseState.SUCCESS;
 
