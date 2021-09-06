@@ -29,12 +29,10 @@ class _HomeScreenState extends State<_HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('build woking 1');
     return Scaffold(
       appBar: AppBar(),
       body: Consumer<HomeViewModel>(
         builder: (context, viewModel, child) {
-          print('build woking 2');
           return _buidBody(viewModel);
         },
       ),
@@ -53,9 +51,10 @@ class _HomeScreenState extends State<_HomeScreen> {
       );
 
   Future callHomeList() async {
-    await Future.delayed(Duration(milliseconds: 2000), () async {
-      await context.read<HomeViewModel>().callHomeList();
-    });
+    await context.read<HomeViewModel>().callHomeList();
+    // await Future.delayed(Duration(milliseconds: 2000), () async {
+      
+    // });
   }
 }
 
