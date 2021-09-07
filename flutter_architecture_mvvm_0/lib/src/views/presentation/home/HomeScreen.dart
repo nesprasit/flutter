@@ -52,9 +52,6 @@ class _HomeScreenState extends State<_HomeScreen> {
 
   Future callHomeList() async {
     await context.read<HomeViewModel>().callHomeList();
-    // await Future.delayed(Duration(milliseconds: 2000), () async {
-      
-    // });
   }
 }
 

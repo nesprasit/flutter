@@ -4,14 +4,26 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        // Android Launch
         {
-            "name": "Flutter",
+            "name": "Flutter_Android",
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug",
             "args": [
                 "--flavor",
-                "uat"
+                "uat" // dev, prod, uat
+            ]
+        },
+        // IOS Launch
+        {
+            "name": "Flutter_IOS",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "UAT" // Development, Production, UAT
             ]
         }
     ]
