@@ -1,0 +1,26 @@
+name: commons
+description: Commons Module
+version: 0.0.1
+homepage:
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # This is our modular
+  dependencies:
+    path: "../dependencies"
+
+  # Implementing lib
+  get_it:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:

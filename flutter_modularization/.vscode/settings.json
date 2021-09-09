@@ -1,0 +1,8 @@
+{
+    "jsonToDart.codeGenerator": "JSON",
+    "jsonToDart.copyWith": false,
+    "jsonToDart.equality": "Default",
+    "jsonToDart.fastMode": false,
+    "jsonToDart.immutable": false,
+    "jsonToDart.toString": "Default"
+}
