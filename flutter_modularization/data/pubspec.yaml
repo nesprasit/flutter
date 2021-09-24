@@ -20,7 +20,7 @@ dependencies:
   domain:
     path: "../domain"
   
-  # Implementing lib
+  # Lib
   dio:
   alice:
   logger:

@@ -6,16 +6,16 @@ class HomeViewModel extends ChangeNotifier {
   CharacterUseCase _characterUseCase = inject();
   List<CharacterData> _characterData = [];
 
-  _setCharacterData(List<CharacterData> list) {
+  set characterData(List<CharacterData> list) {
     _characterData = [];
     _characterData = list;
     notifyListeners();
   }
 
-  getCharacterData() => _characterData;
+  List<CharacterData> get characterData => _characterData;
 
   Future getCharacterList() async {
     final response = await _characterUseCase.getCharacterList();
-    print('response HomeViewModel ${response.data?.data}');
+    print('response data ${response.data?.data}');
   }
 }

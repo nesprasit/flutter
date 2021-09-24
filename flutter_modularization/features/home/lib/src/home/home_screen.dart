@@ -19,6 +19,7 @@ class _HomeScreen extends StatefulWidget {
 }
 
 class __HomeScreenState extends State<_HomeScreen> {
+
   @override
   void initState() {
     super.initState();
@@ -55,6 +56,6 @@ class __HomeScreenState extends State<_HomeScreen> {
    * Call Sevice
    */
   Future _getCharacterList() async {
-    await context.read<HomeViewModel>().getCharacterList();
+    await Provider.of<HomeViewModel>(context).getCharacterList();
   }
 }

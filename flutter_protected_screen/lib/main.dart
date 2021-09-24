@@ -1,19 +1,8 @@
-import 'package:alice/alice.dart';
-import 'package:commons/commons.dart';
-import 'package:data/data.dart' as dataModule;
-import 'package:domain/domain.dart' as domainModule;
 import 'package:flutter/material.dart';
-import 'package:home/home.dart' as featureHome;
+import 'package:flutter_protected_screen/secure_screen.dart';
 
-void main() async {
-  await _init();
+void main() {
   runApp(MyApp());
-}
-
-Future<void> _init() async {
-  await dataModule.init();
-  await domainModule.init();
-  await featureHome.init();
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Modulizarion',
+      title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -34,8 +23,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      navigatorKey: inject<Alice>().getNavigatorKey(),
-      home: featureHome.HomeScreen(),
+      home: SecureScreen(
+        widget: MyHomePage(title: 'Flutter Demo Home Page'),
+      ),
     );
   }
 }
@@ -60,7 +50,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
+  
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -80,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    print("build");
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by

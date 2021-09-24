@@ -1,5 +1,5 @@
-name: flutter_modularization
-description: Modularization project.
+name: flutter_protected_screen
+description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -24,27 +24,17 @@ dependencies:
   flutter:
     sdk: flutter
   
-  # This is our modular
-  dependencies:
-    path: "./dependencies" 
-  commons:
-    path: "./commons" 
-  data:
-    path: "./data" 
-  domain:
-    path: "./domain" 
-  home:
-    path: "./features/home"
-  location:
-    path: "./features/location"
-  
-  # Lib
-  alice:
+  secure_application: ^3.7.3
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

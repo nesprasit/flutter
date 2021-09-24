@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - secure_application (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - secure_application (from `.symlinks/plugins/secure_application/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  secure_application:
+    :path: ".symlinks/plugins/secure_application/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  secure_application: 97b15fc8c839bc8e0f760cb4f0bc7e500b8f9f3e
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.0
