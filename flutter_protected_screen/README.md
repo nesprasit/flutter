@@ -6,6 +6,10 @@
 ### First way
     1. Android : Add code to path <project>/android/app/src/main/kotlin/com/example/flutter_protected_screen/MainActivity.kt
 ```ruby
+#Import
+import io.flutter.embedding.engine.FlutterEngine
+import android.view.WindowManager.LayoutParams
+
 override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
     window.addFlags(LayoutParams.FLAG_SECURE)
     super.configureFlutterEngine(flutterEngine)
