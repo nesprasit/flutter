@@ -9,8 +9,8 @@ import 'package:domain/domain.dart';
 import 'package:flutter/foundation.dart';
 
 class HttpClient {
-  String _baseUrl =
-      "https://us-central1-playground-24194.cloudfunctions.net/api/";
+
+  String _baseUrl = "";
   final _dio = inject<Dio>();
 
   HttpClient() {
@@ -81,18 +81,18 @@ class HttpClient {
 
         return NetworkResponse.apiError(
           statusMessage: 'api error',
-          statusCode: response.statusCode,
+          statusCode: response.statusCode.toString(),
         );
       case HttpStatus.gatewayTimeout:
       case HttpStatus.requestTimeout:
         return NetworkResponse.timeOut(
           statusMessage: 'Time out',
-          statusCode: response.statusCode,
+          statusCode: response.statusCode.toString(),
         );
       default:
         return NetworkResponse.unknownError(
           statusMessage: 'Unknown error',
-          statusCode: response.statusCode,
+          statusCode: response.statusCode.toString(),
         );
     }
   }
@@ -102,15 +102,18 @@ class HttpClient {
    * Api status codes.
    */
   NetworkResponse _onHandlerResponse(BaseStatus model, dynamic json) {
-    switch (StatusCode.NONE.byValue(model.statusCode ?? 0)) {
+    final responseStatus = model.responseStatus;
+    final code = int.parse(responseStatus?.code ?? '0');
+
+    switch (StatusCode.NONE.byValue(code)) {
       case StatusCode.SUCCESS:
         return NetworkResponse.success(data: json);
       case StatusCode.LOGOUT:
         return NetworkResponse.logout();
       default:
         return NetworkResponse.error(
-          statusMessage: model.statusMessage,
-          statusCode: model.statusCode,
+          statusMessage: responseStatus?.message,
+          statusCode: responseStatus?.code,
         );
     }
   }

@@ -11,7 +11,7 @@ extension StatusCodeParse on StatusCode {
   StatusCode byValue(int value) {
     StatusCode code = StatusCode.NONE;
     switch (value) {
-      case 200:
+      case 00000:
         code = StatusCode.SUCCESS;
         break;
       case 10000:

@@ -18,6 +18,7 @@ dependencies:
 
   # Implementing lib
   get_it:
+  logger:
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,8 @@
 import 'package:commons/commons.dart';
-import 'package:domain/src/usecase/character_usecase.dart';
+import 'package:domain/src/usecase/login_usecase.dart';
+import 'package:domain/src/usecase/master_usecase.dart';
 
 Future<void> init() async {
-  inject.registerLazySingleton(() => CharacterUseCase(inject()));
+  inject.registerLazySingleton(() => LoginUseCase(inject()));
+  inject.registerLazySingleton(() => MasterUseCase(inject()));
 }

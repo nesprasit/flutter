@@ -1,16 +1,44 @@
-# flutter_architecture_mvvm_0
+# Flutter Architecture MVVM
 
-Architecture Flutter application.
+Architecture MVVM
 
-## Getting Started
+## Feature
+ - productFlavors IOS And Android
+ - use dio plugin for service
+ - use get_it plugin for inject
+ - use alice plugin for logger service
+ - use provider plugin for state management
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Configuration productFlavors for debug setting launch.json
+```ruby
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        // Android Launch
+        {
+            "name": "Flutter_Android",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "dev" // dev, prod, uat
+            ]
+        },
+        // IOS Launch
+        {
+            "name": "Flutter_IOS",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "Development" // Development, Production, UAT
+            ]
+        }
+    ]
+}
+```

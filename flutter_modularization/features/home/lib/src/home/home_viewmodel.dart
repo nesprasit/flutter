@@ -2,20 +2,30 @@ import 'package:commons/commons.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/foundation.dart';
 
-class HomeViewModel extends ChangeNotifier {
-  CharacterUseCase _characterUseCase = inject();
-  List<CharacterData> _characterData = [];
+final _loginUseCase = inject<LoginUseCase>();
+final _masterUseCase = inject<MasterUseCase>();
 
-  set characterData(List<CharacterData> list) {
-    _characterData = [];
-    _characterData = list;
+class HomeViewModel extends ChangeNotifier {
+  List<MasterDataResult> _masterData = [];
+
+  _setMasterData(List<MasterDataResult> list) {
+    _masterData = [];
+    _masterData = list;
     notifyListeners();
   }
 
-  List<CharacterData> get characterData => _characterData;
+  List<MasterDataResult> get masterData => _masterData;
 
-  Future getCharacterList() async {
-    final response = await _characterUseCase.getCharacterList();
-    print('response data ${response.data?.data}');
+  Future login() async {
+    final email = '';
+    final password = '';
+
+    final response = await _loginUseCase.login(email, password);
+    print('response token ${response.data?.result?.token}');
+  }
+
+  Future getMasterData() async {
+    final response = await _masterUseCase.getMasterData();
+    _setMasterData(response.data?.result ?? []);
   }
 }

@@ -23,7 +23,7 @@ dependencies:
   # Lib
   dio:
   alice:
-  logger:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

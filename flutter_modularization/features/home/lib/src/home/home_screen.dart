@@ -7,7 +7,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<HomeViewModel>(
-      create: (context) => inject(),
+      create: (context) => inject<HomeViewModel>(),
       child: _HomeScreen(),
     );
   }
@@ -19,11 +19,11 @@ class _HomeScreen extends StatefulWidget {
 }
 
 class __HomeScreenState extends State<_HomeScreen> {
-
   @override
   void initState() {
     super.initState();
-    _getCharacterList();
+    // _login();
+    _getMasterData();
   }
 
   @override
@@ -32,13 +32,18 @@ class __HomeScreenState extends State<_HomeScreen> {
       appBar: AppBar(title: Text('DEV')),
       body: Consumer<HomeViewModel>(
         builder: (context, viewModel, child) {
-          return _buildBody(context);
+          print('viewModel ${viewModel.masterData}');
+          if (viewModel.masterData.isNotEmpty) {
+            return _buildBody(context, viewModel);
+          } else {
+            return Container(color: Colors.amber);
+          }
         },
       ),
     );
   }
 
-  Widget _buildBody(BuildContext context) {
+  Widget _buildBody(BuildContext context, HomeViewModel viewModel) {
     return SafeArea(
       child: Container(
         color: Colors.amber,
@@ -55,7 +60,11 @@ class __HomeScreenState extends State<_HomeScreen> {
   /*
    * Call Sevice
    */
-  Future _getCharacterList() async {
-    await Provider.of<HomeViewModel>(context).getCharacterList();
+  void _login() {
+    Provider.of<HomeViewModel>(context, listen: false).login();
+  }
+
+  void _getMasterData() {
+    Provider.of<HomeViewModel>(context, listen: false).getMasterData();
   }
 }

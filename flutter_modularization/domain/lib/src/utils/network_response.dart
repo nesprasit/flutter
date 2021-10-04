@@ -1,6 +1,6 @@
 class NetworkResponse<T> {
   NetworkResponseState? state;
-  int? statusCode;
+  String? statusCode;
   String? statusMessage;
 
   T? data;

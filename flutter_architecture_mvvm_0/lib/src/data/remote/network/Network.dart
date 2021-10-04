@@ -5,7 +5,6 @@ import 'package:flutter_architecture_mvvm_0/src/data/models/base/BaseResponseMod
 import 'package:flutter_architecture_mvvm_0/src/data/remote/network/NetworkResponse.dart';
 import 'package:flutter_architecture_mvvm_0/src/servicelocator/ServiceLocator.dart';
 
-final _baseUrl = 'https://us-central1-playground-24194.cloudfunctions.net/api/';
 final dio = serviceLocator<Dio>();
 
 Future<NetworkResponse> get({
@@ -17,10 +16,7 @@ Future<NetworkResponse> get({
   try {
     _addInterceptors();
     _addHeaderRequest(headers);
-    final response = await dio.get(
-      '$_baseUrl$endpoint',
-      queryParameters: param,
-    );
+    final response = await dio.get(endpoint, queryParameters: param);
     responsed = _onHandlerNetworkResponse(response);
   } catch (e) {
     responsed = NetworkResponse.disconnected(
@@ -40,7 +36,7 @@ Future<NetworkResponse> post({
   try {
     _addInterceptors();
     _addHeaderRequest(headers);
-    final response = await dio.post('$_baseUrl$endpoint', data: body);
+    final response = await dio.post(endpoint, data: body);
     responsed = _onHandlerNetworkResponse(response);
   } catch (e) {
     responsed = NetworkResponse.disconnected(

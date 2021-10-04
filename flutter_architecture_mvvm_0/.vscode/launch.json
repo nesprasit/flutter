@@ -12,7 +12,7 @@
             "flutterMode": "debug",
             "args": [
                 "--flavor",
-                "uat" // dev, prod, uat
+                "dev" // dev, prod, uat
             ]
         },
         // IOS Launch
@@ -23,7 +23,7 @@
             "flutterMode": "debug",
             "args": [
                 "--flavor",
-                "UAT" // Development, Production, UAT
+                "Development" // Development, Production, UAT
             ]
         }
     ]

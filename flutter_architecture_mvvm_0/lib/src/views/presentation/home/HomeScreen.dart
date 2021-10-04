@@ -33,6 +33,7 @@ class _HomeScreenState extends State<_HomeScreen> {
       appBar: AppBar(),
       body: Consumer<HomeViewModel>(
         builder: (context, viewModel, child) {
+          print('Consumer ${viewModel.getHomeList()}');
           return _buidBody(viewModel);
         },
       ),
