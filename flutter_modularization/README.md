@@ -1,5 +1,5 @@
-# Flutter modularization
-Modularization
+# Flutter Architecture
+Flutter Architecture MVVM + Clean Architecture + Modularization
 
-## Getting Started
+## Plugin Usage
 
