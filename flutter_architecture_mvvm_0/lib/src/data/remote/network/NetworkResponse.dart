@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class NetworkResponse<T> {
   NetworkResponseState state;
   int statusCode;

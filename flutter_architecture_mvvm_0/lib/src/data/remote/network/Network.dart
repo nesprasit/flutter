@@ -1,68 +1,59 @@
-import 'dart:convert';
-import 'dart:io';
+import 'package:alice/alice.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_architecture_mvvm_0/src/data/models/base/BaseResponseModel.dart';
 import 'package:flutter_architecture_mvvm_0/src/data/remote/network/NetworkResponse.dart';
-import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
+import 'package:flutter_architecture_mvvm_0/src/servicelocator/ServiceLocator.dart';
 
-final _baseUrl =
-    'https://us-central1-playground-nes-6f456.cloudfunctions.net/api2/';
+final dio = serviceLocator<Dio>();
 
 Future<NetworkResponse> get({
   Map<String, String> headers,
   String endpoint,
   Map<String, dynamic> param,
 }) async {
-  var response;
+  var responsed;
   try {
-    final responseResult = await http.get(
-      _getUrl(endpoint, param),
-      headers: headers,
-    );
-    response = _onHandlerNetworkResponse(responseResult);
-  } on SocketException {
-    response = NetworkResponse.disconnected(
+    _addInterceptors();
+    _addHeaderRequest(headers);
+    final response = await dio.get(endpoint, queryParameters: param);
+    responsed = _onHandlerNetworkResponse(response);
+  } catch (e) {
+    responsed = NetworkResponse.disconnected(
       statusMessage: 'network disconnect',
     );
   }
-
-  return response;
+  return responsed;
 }
 
 Future<NetworkResponse> post({
   Map<String, String> headers,
   String endpoint,
   String token,
-  dynamic body,
+  Map<String, dynamic> body,
 }) async {
-  var response;
+  var responsed;
   try {
-    final result = await http.post(
-      '$_baseUrl$endpoint',
-      headers: headers,
-      body: json.encode(body),
-    );
-
-    response = _onHandlerNetworkResponse(result);
-  } on SocketException {
-    response = NetworkResponse.disconnected(
+    _addInterceptors();
+    _addHeaderRequest(headers);
+    final response = await dio.post(endpoint, data: body);
+    responsed = _onHandlerNetworkResponse(response);
+  } catch (e) {
+    responsed = NetworkResponse.disconnected(
       statusMessage: 'network disconnect',
     );
   }
-
-  return response;
+  return responsed;
 }
 
 NetworkResponse _onHandlerNetworkResponse(Response response) {
   switch (response.statusCode) {
     case 200:
-      final jsonStr = response?.body?.toString() ?? "";
-      if (jsonStr.isNotEmpty) {
-        final jsonResponse = json.decode(jsonStr);
-        final baseModel = BaseResponseModel.fromJson(jsonResponse);
-        return _onHandlerResponseModel(baseModel, jsonResponse);
+      final json = response?.data ?? null;
+      if (json != null) {
+        final baseModel = BaseResponseModel.fromJson(json);
+        return _onHandlerResponseModel(baseModel, json);
       }
-
       return NetworkResponse.apiError(
         statusMessage: 'api error',
         statusCode: response.statusCode,
@@ -94,9 +85,20 @@ NetworkResponse _onHandlerResponseModel(BaseResponseModel base, dynamic json) {
   }
 }
 
-_getUrl(String endpoint, Map<String, dynamic> param) {
-  final queryString = Uri(queryParameters: param)?.query ?? '';
-  var url = '$_baseUrl$endpoint';
-  url += queryString.isNotEmpty ? '?$queryString' : '';
-  return url;
+_addInterceptors() {
+  if (kDebugMode) {
+    serviceLocator<Dio>()
+        .interceptors
+        .add(serviceLocator<Alice>().getDioInterceptor());
+  }
+}
+
+_addHeaderRequest(Map<String, String> headers) {
+  if (headers == null || headers.isEmpty) {
+    dio.options.headers.clear();
+    return;
+  }
+  headers.forEach((key, value) {
+    dio.options.headers[key] = value;
+  });
 }

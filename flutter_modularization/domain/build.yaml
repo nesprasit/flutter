@@ -1,0 +1,7 @@
+targets:
+  $default:
+    sources:
+    - $package$
+    - "lib/**"
+    - "./lib/src/model/**"
+    - "./pubspec.yaml"
