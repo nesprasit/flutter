@@ -9,7 +9,7 @@ class HomeApiImpl implements HomeApi {
   @override
   Future<NetworkResponse<HomeResponseModel>> getHomeList() async {
     final response = await service.get(endpoint: 'kimetsu_no_yaiba/list');
-    response.data = HomeResponseModel.fromJson(response.data);
+    response.data = HomeResponseModel.fromJson(response.data ?? Map());
     return NetworkResponse<HomeResponseModel>(response);
   }
 }
